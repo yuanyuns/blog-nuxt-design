@@ -17,6 +17,14 @@
     data: () => ({
       article: {}
     }),
+    head () {
+      return {
+        title: this.article.title,
+        meta: [
+          { hid: 'description', name: 'description', content: this.article.summary }
+        ]
+      }
+    },
     asyncData({params}) {
       let id = params.id
       return api.GET_ARTICLE_INFO({id}).then(res => {
