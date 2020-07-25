@@ -1,97 +1,56 @@
 <template>
-  <v-layout
-    column
-    justify-center
-    align-center
-  >
-    <v-flex
-      xs12
-      sm8
-      md6
-    >
-      <div class="text-center">
-        <logo />
-        <vuetify-logo />
-      </div>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-          <p>
-            For more information on Vuetify, check out the <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation
-            </a>.
-          </p>
-          <p>
-            If you have questions, please join the official <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord
-            </a>.
-          </p>
-          <p>
-            Find a bug? Report it on the github <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board
-            </a>.
-          </p>
-          <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3">
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            to="/inspire"
-          >
-            Continue
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-flex>
-  </v-layout>
+  <div>
+    <v-row>
+      <v-col :cols='getCol(index)' v-for="(item,index) in list" :key="item.id">
+        <v-card  dark v-ripple exact :to="{path: `/page/${item.id}`}">
+          <v-img
+            :src="'https://guiyunweb.blog.obs.cn-east-3.myhuaweicloud.com/'+item.thumbnail+'?x-image-process=style/style-e5fb'"
+            class="white--text align-end"
+            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+            height="350px">
+            <v-card-title>{{item.title}}</v-card-title>
+          </v-img>
+        </v-card>
+      </v-col>
+    </v-row>
+  </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
+  import api from "../api"
 
-export default {
-  components: {
-    Logo,
-    VuetifyLogo
+  export default {
+    data: () => ({
+      list: [],
+      total: 0
+    }),
+    asyncData({params}) {
+      return api.GET_ARTICLE_LIST().then(res => {
+        return {
+          list: res.data.content,
+          total: res.data.totalElements
+        };
+      })
+    },
+    created() {
+      this.getList();
+    },
+    methods: {
+      getList() {
+        api.GET_ARTICLE_LIST().then(res => {
+          this.list = res.data.content
+          this.total = res.data.totalElements
+        })
+      },
+      getCol(index) {
+        if (index === 0) {
+          return 12;
+        } else if (index  <=2) {
+          return 6;
+        } else {
+          return 4;
+        }
+      }
+    }
   }
-}
 </script>
