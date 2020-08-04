@@ -1,0 +1,37 @@
+[
+  {
+    "name": "about",
+    "path": "/about",
+    "component": "E:\\\\code\\\\was\\\\blog-desing\\\\pages\\\\about\\\\index.vue",
+    "chunkName": "pages/about/index",
+    "_name": "_1c8f2e37"
+  },
+  {
+    "name": "archive",
+    "path": "/archive",
+    "component": "E:\\\\code\\\\was\\\\blog-desing\\\\pages\\\\archive\\\\index.vue",
+    "chunkName": "pages/archive/index",
+    "_name": "_1b0d913c"
+  },
+  {
+    "name": "links",
+    "path": "/links",
+    "component": "E:\\\\code\\\\was\\\\blog-desing\\\\pages\\\\links\\\\index.vue",
+    "chunkName": "pages/links/index",
+    "_name": "_0825ee8b"
+  },
+  {
+    "name": "page-id",
+    "path": "/page/:id?",
+    "component": "E:\\\\code\\\\was\\\\blog-desing\\\\pages\\\\page\\\\_id.vue",
+    "chunkName": "pages/page/_id",
+    "_name": "_43796769"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "E:\\\\code\\\\was\\\\blog-desing\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_05ab52b0"
+  }
+]

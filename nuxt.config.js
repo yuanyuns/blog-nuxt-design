@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+import minifyTheme from 'minify-css-string'
 
 export default {
   /*
@@ -21,39 +22,44 @@ export default {
     },
     title: "归云的个人网站",
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
-      { hid: 'keywords', name: 'description', content: "归云的博客,孟源运的博客,vue,java,linux,博客,blog" },
-      { hid: 'description', content:"孟源运的个人博客,主要作用于平时归纳总结来使用" }
+      {charset: 'utf-8'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+      {hid: 'description', name: 'description', content: process.env.npm_package_description || ''},
+      {hid: 'keywords', name: 'description', content: "归云的博客,孟源运的博客,vue,java,linux,博客,blog"},
+      {hid: 'description', content: "孟源运的个人博客,主要作用于平时归纳总结来使用"}
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
     ]
   },
   /*
   ** Global CSS
   */
-  css: [
-  ],
+  loading: {color: '#fff'},
+  css: [],
   /*
   ** Plugins to load before mounting the App
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
     '@/plugins/highlight',
+    { src: '~plugins/ga.js', mode: 'client' }
+    // '@/plugins/vuetify'
   ],
   /*
   ** Auto import components
   ** See https://nuxtjs.org/api/configuration-components
   */
-  components: true,
+  components: false,
   /*
   ** Nuxt.js dev-modules
   */
   buildModules: [
     '@nuxtjs/vuetify',
   ],
+  env: {
+    baseUrl: 'https://api.guiyunweb.com:8866'
+  },
   /*
   ** Nuxt.js modules
   */
@@ -62,7 +68,17 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt/content
-    '@nuxt/content',
+    // '@nuxt/content',
+    '@nuxtjs/component-cache',
+
+    // 配置选项
+    [
+      '@nuxtjs/component-cache',
+      {
+        max: 10000,
+        maxAge: 1000 * 60 * 60
+      }
+    ]
   ],
   /*
   ** Axios module configuration
@@ -79,9 +95,15 @@ export default {
   ** https://github.com/nuxt-community/vuetify-module
   */
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
     theme: {
       dark: true,
+      options: {
+        minifyTheme,
+        themeCache: {
+          get: key => localStorage.getItem(key),
+          set: (key, value) => localStorage.setItem(key, value),
+        }
+      },
       themes: {
         dark: {
           primary: colors.blue.darken2,
@@ -100,5 +122,8 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
+    extractCSS: true,
+    optimizeCSS:true
+    // publicPath: "https://blog-cnd.oss-cn-shanghai.aliyuncs.com/"
   }
 }
