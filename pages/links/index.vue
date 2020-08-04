@@ -7,20 +7,28 @@
       申请添加友链
     </div>
 
+    <h2>我的网站信息</h2>
+    <div style="margin: 30px" class="text-body-1">
+      <p>名称：归云的个人小站</p>
+      <p>地址：http://guiun.com/</p>
+      <p>简介：归云的个人小站</p>
+      <p>LOGO：https://guiun.com/favicon.ico</p>
+    </div>
+
     <h2>我的邻居们</h2>
 
     <v-row>
       <v-col cols="3" v-for="item in list" :key="item.id">
-        <v-card  dark v-ripple exact height="310">
+        <v-card dark v-ripple exact height="310">
           <v-img :src="item.cover" height="200px">
           </v-img>
           <v-card-title>
             <a :href="item.link" target="_blank">
-              {{item.name}}
+              {{ item.name }}
             </a>
           </v-card-title>
           <v-card-subtitle>
-            {{item.describe}}
+            {{ item.describe }}
           </v-card-subtitle>
         </v-card>
       </v-col>
@@ -65,40 +73,40 @@
 </template>
 
 <script>
-  import api from "../../api"
+import api from "../../api"
 
-  export default {
-    name: "index",
-    data: () => ({
-      dialog: false,
-      links: {},
-      snackbar: false,
-      list: []
-    }),
-    asyncData({params}) {
-      return api.SHOW_LINK().then(res => {
-        return {list: res.data}
+export default {
+  name: "index",
+  data: () => ({
+    dialog: false,
+    links: {},
+    snackbar: false,
+    list: []
+  }),
+  asyncData({params}) {
+    return api.SHOW_LINK().then(res => {
+      return {list: res.data}
+    })
+  },
+  created() {
+    this.getList()
+  },
+  methods: {
+    getList() {
+      api.SHOW_LINK().then(res => {
+        this.list = res.data
       })
     },
-    created() {
-      this.getList()
-    },
-    methods: {
-      getList() {
-        api.SHOW_LINK().then(res => {
-          this.list = res.data
-        })
-      },
-      addLinks() {
-        this.links.show = false
-        api.ADD_LINK(this.links).then(() => {
-          this.dialog = false
-          this.snackbar = true
-          this.links = {}
-        })
-      }
+    addLinks() {
+      this.links.show = false
+      api.ADD_LINK(this.links).then(() => {
+        this.dialog = false
+        this.snackbar = true
+        this.links = {}
+      })
     }
   }
+}
 </script>
 
 <style scoped>

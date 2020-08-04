@@ -19,22 +19,26 @@
     <h2 style="margin: 20px 0">评论</h2>
     <article-comment :articleId="article.id" father=""></article-comment>
     <h2 style="margin: 20px 0">评论列表</h2>
-
-    <v-list-item three-line v-for="(item,index) in commentList" :key="item.id">
-      <v-list-item-avatar>
-        <v-img :src="'https://sdn.geekzu.org/avatar/'+getMD5(item.email)"></v-img>
-      </v-list-item-avatar>
-      <v-list-item-content>
-        <v-list-item-title style="margin-bottom: -20px">
-          <h3>{{item.username}}&nbsp;<span style="font-size: 10px">{{timeFromNow(item.createDate)}}</span></h3>
-          <br>
-          {{getMD5()}}
-        </v-list-item-title>
-        <v-list-item-subtitle>
-          {{item.comment}}
-        </v-list-item-subtitle>
-      </v-list-item-content>
-    </v-list-item>
+    <v-list dark>
+      <template v-for="item in commentList">
+        <v-list-item :key="item.title">
+          <v-list-item-content>
+            <v-list-item-title style="margin-bottom: -15px">
+              <h3>
+                <v-avatar size="35" left>
+                  <v-img :src="'https://sdn.geekzu.org/avatar/'+getMD5(item.email)"></v-img>
+                </v-avatar>
+                &nbsp;{{ item.username }}
+                &nbsp;<span style="font-size: 10px">{{timeFromNow(item.createDate)}}</span>
+              </h3>
+            </v-list-item-title>
+            <v-list-item-subtitle style="white-space: pre-line;padding-left: 45px">
+              {{ item.comment }}
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+      </template>
+    </v-list>
   </div>
 </template>
 

@@ -56,6 +56,7 @@ export default {
         this.comment.createDate = new Date()
         api.ADD_COMMENT(this.comment).then(() => {
           this.$parent.getList(this.articleId)
+          this.comment = {}
         })
       }
     }
