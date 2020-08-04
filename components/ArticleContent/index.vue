@@ -5,7 +5,7 @@
     <v-chip class="ma-2" v-for="item in tags" :key="item">
       {{item}}
     </v-chip>
-    <v-divider></v-divider>
+    <v-divider style="margin: 20px 0"></v-divider>
   </div>
 </template>
 
