@@ -91,7 +91,7 @@ export default {
   created() {
     this.getList()
   },
-  methods: {
+    methods: {
     getList() {
       api.SHOW_LINK().then(res => {
         this.list = res.data

@@ -25,7 +25,8 @@ export default {
   plugins: [
     '@/plugins/highlight',
     '@/plugins/vuetify-theme-cache.js',
-    {src: '~plugins/ga.js', mode: 'client'}
+    {src: '~plugins/ga.js', mode: 'client'},
+    { src: '~plugins/baidu.js', ssr: false }
   ],
   components: false,
   buildModules: [
