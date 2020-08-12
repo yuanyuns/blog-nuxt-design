@@ -10,9 +10,9 @@
     <h2>我的网站信息</h2>
     <div style="margin: 30px" class="text-body-1">
       <p>名称：归云的个人小站</p>
-      <p>地址：http://guiun.com/</p>
+      <p>地址：http://guiyunweb.com.com/</p>
       <p>简介：归云的个人小站</p>
-      <p>LOGO：https://guiun.com/favicon.ico</p>
+      <p>LOGO：https://guiyunweb.com/favicon.ico</p>
     </div>
 
     <h2>我的邻居们</h2>

@@ -76,7 +76,6 @@ export default {
   },
   build: {
     extractCSS: true,
-    optimizeCSS: true,
-    publicPath: 'https://cdn.guiun.com:10080'
+    optimizeCSS: true
   }
 }

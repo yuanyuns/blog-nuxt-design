@@ -4,7 +4,7 @@
       <v-col :cols='getCol(index)' v-for="(item,index) in list" :key="item.id">
         <v-card  dark v-ripple exact :to="{path: `/page/${item.id}`}">
           <v-img
-            :src="'https://img.guiun.com:14443/'+item.thumbnail"
+            :src="'https://guiyunweb.blog.obs.cn-east-3.myhuaweicloud.com/'+item.thumbnail"
             class="white--text align-end"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
             height="350px">
@@ -25,7 +25,7 @@
       total: 0
     }),
     asyncData({params}) {
-      return api.GET_ARTICLE_LIST().then(res => {
+      return api.GET_ARTICLE_LIST({page:0,size:15}).then(res => {
         return {
           list: res.data.content,
           total: res.data.totalElements
@@ -37,7 +37,7 @@
     },
     methods: {
       getList() {
-        api.GET_ARTICLE_LIST().then(res => {
+        api.GET_ARTICLE_LIST({page:0,size:15}).then(res => {
           this.list = res.data.content
           this.total = res.data.totalElements
         })
