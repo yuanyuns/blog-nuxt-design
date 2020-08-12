@@ -4,7 +4,7 @@
       <v-col :cols='getCol(index)' v-for="(item,index) in list" :key="item.id">
         <v-card  dark v-ripple exact :to="{path: `/page/${item.id}`}">
           <v-img
-            :src="'https://guiyunweb.blog.obs.cn-east-3.myhuaweicloud.com/'+item.thumbnail"
+            :src="'https://img.guiyunweb.com/'+item.thumbnail+ '?x-image-process=style/style-a334'"
             class="white--text align-end"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
             height="350px">
