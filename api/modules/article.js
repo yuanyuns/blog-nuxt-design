@@ -1,21 +1,21 @@
 export default ({request}) => ({
   GET_ARTICLE_LIST(params) {
     return request({
-      url: '/posts/showList',
+      url: '/article/showList',
       method: 'get',
       params
     })
   },
   GET_ARTICLE_INFO(params = {}) {
     return request({
-      url: '/posts/getInfo',
+      url: '/article/getInfo',
       method: 'get',
       params
     })
   },
   GET_ARCHIVE(params = {}) {
     return request({
-      url: '/posts/archive',
+      url: '/article/archive',
       method: 'get',
       params
     })
@@ -30,7 +30,7 @@ export default ({request}) => ({
   SHOW_LINK(data = {}) {
     return request({
       url: '/link/showList',
-      method: 'post',
+      method: 'get',
       data
     })
   },

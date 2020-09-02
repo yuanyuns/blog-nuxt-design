@@ -5,7 +5,7 @@
         <h2>{{item.year}}年</h2>
         <v-list-item v-for="item2 in item.archives" :key="item2.id" :to="{path: `/page/${item2.id}`}">
           <v-list-item-content>
-            <v-list-item-title>{{getDate(item2.createTime)}}&nbsp;{{item2.title}}</v-list-item-title>
+            <v-list-item-title>{{getDate(item2.create_time)}}&nbsp;{{item2.title}}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </div>
@@ -30,7 +30,7 @@
         });
       },
       getDate(time){
-        let createDate = new Date(time +" 00:00:01");
+        let createDate = new Date(time);
         return this.dateFormat("mm月dd日",createDate)
       },
       dateFormat(fmt, date) {

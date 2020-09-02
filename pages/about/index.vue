@@ -29,7 +29,7 @@
 
     <!--评论-->
     <h2 style="margin: 20px 0">评论</h2>
-    <article-comment articleId="about" father=""></article-comment>
+    <article-comment articleId="19960602" father=""></article-comment>
     <h2 style="margin: 20px 0">评论列表</h2>
     <v-list dark>
       <template v-for="item in commentList">
@@ -78,7 +78,7 @@ export default {
     }
   },
   created() {
-    this.getList("about")
+    this.getList("19960602")
   },
   methods: {
     getList(id) {

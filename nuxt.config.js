@@ -33,7 +33,7 @@ export default {
     '@nuxtjs/vuetify',
   ],
   env: {
-    baseUrl: 'https://api.guiyunweb.com:8866'
+    baseUrl: 'https://api.guiyun.pro'
   },
 
   modules: [
