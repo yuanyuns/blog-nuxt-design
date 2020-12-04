@@ -16,7 +16,7 @@
     "@nuxtjs/proxy": "^2.0.1",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "faker": "^4.1.0",
-    "highlight.js": "^10.1.1",
+    "highlight.js": "^10.4.1",
     "lru-cache": "^6.0.0",
     "markdown-it": "^11.0.0",
     "md5": "^2.3.0",
