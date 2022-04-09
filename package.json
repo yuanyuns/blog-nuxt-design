@@ -21,7 +21,7 @@
     "markdown-it": "^11.0.0",
     "md5": "^2.3.0",
     "minify-css-string": "^1.0.0",
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "nuxt": "^2.13.0"
   },
   "devDependencies": {
